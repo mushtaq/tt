@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "typescript": "3.7.2",
-    "@types/rsocket-websocket-client": "0.0.3"
-  }
-}

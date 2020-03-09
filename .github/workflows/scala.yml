@@ -19,8 +19,17 @@ jobs:
           java-version: 11
       - name: Install Coursier
         run: curl -Lo coursier https://git.io/coursier-cli && chmod +x coursier
+      - name: Coursier Sbt Cache
+        uses: actions/cache@v1
+        with:
+          path: ~/.cache/coursier/v1
+          key: ${{ runner.os }}-sbt-coursier-cache-${{ hashFiles('**/build.sbt') }}
+      - name: Local Artifacts Cache
+          uses: actions/cache@v1
+          with:
+            path: ~/.ivy2/local
+            key: ${{ runner.os }}-local-artifacts-cache-${{ hashFiles('**/build.sbt') }}
       - name: Install Sbt launcher
         run: ./coursier install sbt-launcher
       - name: Compile
         run: ~/.local/share/coursier/bin/sbt typings/compile
-

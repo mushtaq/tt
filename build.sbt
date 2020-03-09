@@ -15,7 +15,7 @@ lazy val typings = project
   .enablePlugins(ScalablyTypedConverterExternalNpmPlugin, ScalaJSPlugin)
   .settings(
     externalNpm := {
-      Process("sh -l -c yarn").!
+      Process("sh -l -c yarn", baseDirectory.value).!
       baseDirectory.value
     },
     stStdlib := List("es6"),

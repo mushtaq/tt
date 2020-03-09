@@ -1,4 +1,4 @@
-name: Scala CI
+name: typings-ci
 
 on:
   push:
@@ -12,10 +12,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Set up JDK 11
-      uses: actions/setup-java@v1
-      with:
-        java-version: 11
-    - name: Compile
-      run: sbt typings/compile
+      - uses: actions/checkout@v2
+      - name: Set up JDK 11
+        uses: actions/setup-java@v1
+        with:
+          java-version: 11
+      - name: Install Coursier
+        run: curl -Lo coursier https://git.io/coursier-cli && chmod +x coursier &&
+      - name: Install Sbt launcher
+        run: ./coursier install sbt-launcher
+      - name: Compile
+        run: ~/.local/share/coursier/bin/sbt typings/compile

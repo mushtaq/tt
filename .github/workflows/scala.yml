@@ -33,3 +33,4 @@ jobs:
         run: ./coursier install sbt-launcher
       - name: Compile
         run: ~/.local/share/coursier/bin/sbt typings/compile
+

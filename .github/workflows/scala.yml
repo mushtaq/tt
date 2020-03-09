@@ -25,10 +25,10 @@ jobs:
           path: ~/.cache/coursier/v1
           key: ${{ runner.os }}-sbt-coursier-cache-${{ hashFiles('**/build.sbt') }}
       - name: Local Artifacts Cache
-          uses: actions/cache@v1
-          with:
-            path: ~/.ivy2/local
-            key: ${{ runner.os }}-local-artifacts-cache-${{ hashFiles('**/build.sbt') }}
+        uses: actions/cache@v1
+        with:
+          path: ~/.ivy2/local
+          key: ${{ runner.os }}-local-artifacts-cache-${{ hashFiles('**/build.sbt') }}
       - name: Install Sbt launcher
         run: ./coursier install sbt-launcher
       - name: Compile

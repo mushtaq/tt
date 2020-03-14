@@ -1,5 +1,7 @@
 package aa
 
+import java.io.File
+
 import bintry._
 import dispatch.Defaults._
 import dispatch._
@@ -31,6 +33,15 @@ object Main {
     repo
       .get("std")
       .createVersion("3.8-7f1790")
+      .run()
+
+    repo
+      .get("std")
+      .version("3.8-7f1790")
+      .upload("", new File(""))
+    repo
+      .get("std")
+      .mvnUpload("com/mausamy", new File("std_sjs0.6_2.13.zip"))
       .run()
   }
 }

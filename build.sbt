@@ -25,7 +25,7 @@ lazy val `demo` = project.settings(
 )
 
 lazy val typings = project
-  .enablePlugins(ScalablyTypedConverterExternalNpmPlugin, ScalaJSPlugin)
+  .enablePlugins(ScalablyTypedConverterExternalNpmPlugin, ScalaJSPlugin, StPublisher)
   .settings(
     externalNpm := {
       Process("sh -l -c yarn", baseDirectory.value).!

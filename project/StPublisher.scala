@@ -24,33 +24,40 @@ object StPublisher extends AutoPlugin {
         lazy val repo: client.Repo = client.repo(client.user, "tmtyped")
 
         implicit val log: ManagedLogger = streams.value.log
-        val remotePackages = repo.packages().get.map(_.name)
+        val remotePackages = repo.packages()().get.map(_.name)
+        remotePackages.mkString(", ").log("existing remote packages")
 
         stImport.value
           .filter(_.organization == "org.scalablytyped")
           .foreach {
-            moduleID =>
-              val pkgName = moduleID.name.split("_").head
-              val packageExists = remotePackages.contains(pkgName)
+            moduleId =>
+              val moduleInfo = ModuleInfo(moduleId)
+              val packageExists = remotePackages.contains(moduleInfo.pkgName)
               if (!packageExists) {
                 repo
-                  .createPackage(pkgName)
+                  .createPackage(moduleInfo.pkgName)
                   .licenses("Apache-2.0")
-                  .vcs("https://github.com/mushtaq/typings")
+                  .vcs("https://github.com/mushtaq/typings")()
                   .get
+                  .log("created package: ")
+              } else {
+                moduleInfo.pkgName.log(s"package exists")
               }
 
-              List("jars" -> ".jar", "srcs" -> "-sources.jar", "poms" -> ".pom").foreach {
-                case (dir, suffix) =>
-                  val remotePath =
-                    s"org/scalablytyped/${moduleID.name}/${moduleID.revision}/${moduleID.name}-${moduleID.revision}$suffix"
-                  val artifactLocation =
-                    s"${System.getProperty("user.home")}/.ivy2/local/org.scalablytyped/${moduleID.name}/${moduleID.revision}/$dir/${moduleID.name}$suffix"
-
-                  repo
-                    .get(pkgName)
-                    .mvnUpload(remotePath, new File(artifactLocation))
-                    .getJson
+              val latestVersion = repo.get(moduleInfo.pkgName)().get.versions.lastOption
+              latestVersion.log(s"latest version for ${moduleInfo.pkgName}")
+              val versionExists = latestVersion.contains(moduleId.revision)
+              if (!versionExists) {
+                List(moduleInfo.jarMapping, moduleInfo.sourceJarMapping, moduleInfo.pomMapping).foreach {
+                  case (artifactFile, mavenPath) =>
+                    mavenPath.log("uploading")
+                    repo
+                      .get(moduleInfo.pkgName)
+                      .mvnUpload(mavenPath, artifactFile)()
+                      .get
+                }
+              } else {
+                moduleId.revision.log(s"this version is already uploaded for ${moduleInfo.pkgName}")
               }
           }
 

@@ -12,7 +12,7 @@ inThisBuild(
 lazy val `typings-root` = project.in(file(".")).aggregate(typings)
 
 lazy val typings = project
-  .enablePlugins(ScalablyTypedConverterExternalNpmPlugin, ScalaJSPlugin, StPublisher)
+  .enablePlugins(ScalablyTypedConverterExternalNpmPlugin, ScalaJSPlugin, StPublisherPlugin)
   .settings(
     externalNpm := {
       Process("sh -l -c yarn", baseDirectory.value).!

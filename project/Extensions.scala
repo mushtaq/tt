@@ -11,7 +11,8 @@ object Extensions {
 
   implicit class RichLogger[T](x: T) {
     def log(prefix: String = "")(implicit logger: ManagedLogger): T = {
-      logger.info(s"$prefix: $x")
+      val actualPrefix = if (prefix.isEmpty) "" else s"$prefix: "
+      logger.info(s"$actualPrefix$x")
       x
     }
   }

@@ -39,7 +39,7 @@ object StPublisher extends AutoPlugin {
                   .licenses("Apache-2.0")
                   .vcs("https://github.com/mushtaq/typings")()
                   .get
-                  .log("created package: ")
+                  .log("created package")
               } else {
                 moduleInfo.pkgName.log(s"package exists")
               }
@@ -53,8 +53,11 @@ object StPublisher extends AutoPlugin {
                     mavenPath.log("uploading")
                     repo
                       .get(moduleInfo.pkgName)
-                      .mvnUpload(mavenPath, artifactFile)()
+                      .mvnUpload(mavenPath, artifactFile)
+                      .publish(true)(dispatch.as.json4s.Json)
                       .get
+                      .pretty
+                      .log()
                 }
               } else {
                 moduleId.revision.log(s"this version is already uploaded for ${moduleInfo.pkgName}")

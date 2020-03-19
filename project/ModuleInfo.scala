@@ -9,6 +9,8 @@ case class ModuleInfo(moduleId: ModuleID) {
   def sourceJarMapping: (File, String) = artifactMapping("srcs", "-sources.jar")
   def pomMapping: (File, String) = artifactMapping("poms", ".pom")
 
+  def dep: String = s""""${moduleId.organization}" %%% "$pkgName" % "${moduleId.revision}"""".stripMargin
+
   def artifactMapping(ivyDir: String, suffix: String): (File, String) = {
     val artifactFile = new File(
       s"${System.getProperty("user.home")}/.ivy2/local/${moduleId.organization}/${moduleId.name}/${moduleId.revision}/$ivyDir/${moduleId.name}$suffix"

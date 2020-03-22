@@ -20,8 +20,7 @@ class StPublisher(repo: bintry.Client#Repo)(implicit logger: ManagedLogger) {
         pkgName.log(s"package exists")
       }
 
-      val latestVersion = getLatestVersion(pkgName).log(s"latest version for ${pkgName}")
-      if (!latestVersion.contains(moduleId.revision)) {
+      if (!getVersions(pkgName).contains(moduleId.revision)) {
         List(moduleInfo.jarMapping, moduleInfo.sourceJarMapping, moduleInfo.pomMapping).foreach {
           case (artifactFile, mavenPath) =>
             mavenPath.log("uploading")
@@ -44,7 +43,7 @@ class StPublisher(repo: bintry.Client#Repo)(implicit logger: ManagedLogger) {
       .publish(true)(dispatch.as.json4s.Json)
       .get
 
-  def getLatestVersion(pkgName: String): Option[String] = repo.get(pkgName)().get.versions.headOption
+  def getVersions(pkgName: String): List[String] = repo.get(pkgName)().get.versions
 
   def createPackage(pkgName: String): bintry.Package =
     repo

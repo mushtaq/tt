@@ -8,9 +8,9 @@
   integrity sha512-4AKWJ6tvEU4fk0770oAK4Z0lQUuSnc5ljHTcYZhQtdP7XMDKKvegGUC6xGD8+4+F+svZKAzlxbKnuGWfgMtgVA==
 
 "@types/node@*":
-  version "13.7.0"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-13.7.0.tgz#b417deda18cf8400f278733499ad5547ed1abec4"
-  integrity sha512-GnZbirvmqZUzMgkFn70c74OQpTTUcCzlhQliTzYjQMqg+hVKcDnxdL19Ne3UdYzdMA/+W3eb646FWn/ZaT1NfQ==
+  version "13.9.2"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-13.9.2.tgz#ace1880c03594cc3e80206d96847157d8e7fa349"
+  integrity sha512-bnoqK579sAYrQbp73wwglccjJ4sfRdKU7WNEZ5FW4K2U6Kc0/eZ5kvXG0JKsEKFB50zrFmfFt52/cvBbZa7eXg==
 
 "@types/prop-types@*":
   version "15.7.3"
@@ -25,26 +25,26 @@
     "@types/react" "*"
 
 "@types/react@*", "@types/react@^16.8.0":
-  version "16.9.19"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-16.9.19.tgz#c842aa83ea490007d29938146ff2e4d9e4360c40"
-  integrity sha512-LJV97//H+zqKWMms0kvxaKYJDG05U2TtQB3chRLF8MPNs+MQh/H1aGlyDUxjaHvu08EAGerdX2z4LTBc7ns77A==
+  version "16.9.25"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-16.9.25.tgz#6ae2159b40138c792058a23c3c04fd3db49e929e"
+  integrity sha512-Dlj2V72cfYLPNscIG3/SMUOzhzj7GK3bpSrfefwt2YT9GLynvLCCZjbhyF6VsT0q0+aRACRX03TDJGb7cA0cqg==
   dependencies:
     "@types/prop-types" "*"
     csstype "^2.2.0"
 
 "@types/rsocket-core@*":
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/@types/rsocket-core/-/rsocket-core-0.0.3.tgz#7a2d188002aaa62690fa97bd92138434e6b31cda"
-  integrity sha512-dCVQF0manLKbkcAggnafCR7Nkl5wBm3mqydcSUOA8JWeGeSp2k4aXTImhASkgFdyulB/RzGSUEIPOaJR4sB3qA==
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/@types/rsocket-core/-/rsocket-core-0.0.5.tgz#5c5605af821a56cbce1777a420583511f3d31974"
+  integrity sha512-ARlWAs7kJGFezpaK7wGZWB5XhEqMP4NlWBqae43goLR31fLU/VmaCmlIgVOFxj5xwNO6EcUlFQBZNVNxr3Qk3Q==
   dependencies:
     "@types/node" "*"
     "@types/rsocket-flowable" "*"
     "@types/rsocket-types" "*"
 
 "@types/rsocket-flowable@*":
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/@types/rsocket-flowable/-/rsocket-flowable-0.0.2.tgz#2a795798e3bcde5905772a4acc692290e32e85aa"
-  integrity sha512-yBbwAjta5kWuR+DINmxEJJ1Nfy8/JUCEVFnrzlqVGk0u85Apki5GUY5mjEeDIwWVWdTUt/jXoPemdv74wBdBHg==
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/@types/rsocket-flowable/-/rsocket-flowable-0.0.3.tgz#e57c397744b1efb14584ade411f05222c2f7162a"
+  integrity sha512-fBaWvQuNTRFlu/GZ34ssqe2gA683FoWAkWYq6o1bLWkIP2MgZmhc1GLyxli8A3Np/ysvwR1/9AipQoRkjOW7DA==
   dependencies:
     "@types/rsocket-types" "*"
 
@@ -66,9 +66,9 @@
     "@types/rsocket-types" "*"
 
 csstype@^2.2.0:
-  version "2.6.8"
-  resolved "https://registry.yarnpkg.com/csstype/-/csstype-2.6.8.tgz#0fb6fc2417ffd2816a418c9336da74d7f07db431"
-  integrity sha512-msVS9qTuMT5zwAGCVm4mxfrZ18BNc6Csd0oJAtiFMZ1FAx1CCvy2+5MDmYoix63LM/6NDbNtodCiGYGmFgO0dA==
+  version "2.6.9"
+  resolved "https://registry.yarnpkg.com/csstype/-/csstype-2.6.9.tgz#05141d0cd557a56b8891394c1911c40c8a98d098"
+  integrity sha512-xz39Sb4+OaTsULgUERcCk+TJj8ylkL4aSVDQiX/ksxbELSqwkgt4d4RD7fovIdgJGSuNYqwZEiVjYY5l0ask+Q==
 
 csw-aas-js@1.0.0:
   version "1.0.0"

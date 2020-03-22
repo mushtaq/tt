@@ -13,7 +13,7 @@ class StPublisher(repo: bintry.Client#Repo)(implicit logger: ManagedLogger) {
 
     selectedModules.foreach { moduleId =>
       val moduleInfo = ModuleInfo(moduleId)
-      val pkgName = moduleInfo.pkgName
+      val pkgName    = moduleInfo.pkgName
       if (!remotePackages.contains(pkgName)) {
         createPackage(pkgName).log("created package")
       } else {

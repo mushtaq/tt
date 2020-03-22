@@ -1,23 +1,13 @@
-import scala.sys.process.Process
+enablePlugins(ScalablyTypedConverterExternalNpmPlugin, ScalaJSPlugin, StPublisherPlugin)
 
-inThisBuild(
-  Seq(
-    scalaVersion := "2.13.1",
-    version := "0.1.0-SNAPSHOT",
-    organization := "com.github.tmtsoftware.typings",
-    organizationName := "ThoughtWorks"
-  )
-)
+scalaVersion := "2.13.1"
+version := "0.1.0-SNAPSHOT"
+organization := "com.github.tmtsoftware.typings"
+organizationName := "ThoughtWorks"
 
-lazy val `typings-root` = project.in(file(".")).aggregate(typings)
-
-lazy val typings = project
-  .enablePlugins(ScalablyTypedConverterExternalNpmPlugin, ScalaJSPlugin, StPublisherPlugin)
-  .settings(
-    externalNpm := {
-      Process("sh -l -c yarn", baseDirectory.value).!
-      baseDirectory.value
-    },
-    stStdlib := List("es6"),
-    stFlavour := Flavour.Slinky
-  )
+externalNpm := {
+  sys.process.Process("sh -l -c yarn", baseDirectory.value).!
+  baseDirectory.value
+}
+stStdlib := List("es6")
+stFlavour := Flavour.Slinky

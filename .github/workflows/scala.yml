@@ -32,4 +32,6 @@ jobs:
       - name: Install Sbt launcher
         run: ./coursier install sbt-launcher
       - name: Compile
-        run: ~/.local/share/coursier/bin/sbt typings/compile
+        run: ~/.local/share/coursier/bin/sbt compile
+      - name: Publish
+        run: ~/.local/share/coursier/bin/sbt stPublish

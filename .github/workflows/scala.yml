@@ -26,7 +26,7 @@ jobs:
         run:  ./cs install sbt-launcher
         
       - name: Compile
-        run: sbt compile
+        run: which sbt && sbt compile
         
       - name: Publish
         run: sbt stPublish

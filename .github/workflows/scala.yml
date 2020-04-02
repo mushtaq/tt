@@ -24,7 +24,7 @@ jobs:
         run: ./cs install sbt-launcher
         
       - name: Compile
-        run: ~/.local/share/coursier/bin/sbt compile
+        run: java --version && ~/.local/share/coursier/bin/sbt compile
         
       - name: Publish
         run: ~/.local/share/coursier/bin/sbt stPublish

@@ -18,7 +18,7 @@ jobs:
         run: curl -Lo cs https://git.io/coursier-cli-linux && chmod +x cs
         
       - name: Install Java
-        run: ./cs java --jvm 11 --version
+        run: ./cs java --jvm 11 --env
 
       - name: Set Java_Home
         run: eval "$(./cs java --jvm 11 --env)"

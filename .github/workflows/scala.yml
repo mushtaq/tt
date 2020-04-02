@@ -24,9 +24,6 @@ jobs:
 
       - name: Install Sbt
         run:  ./cs install sbt-launcher
-        
-      - name: Compile
-        run: which sbt && sbt compile
-        
-      - name: Publish
-        run: sbt stPublish
+
+      - name: Which Sbt
+        run:  which sbt && echo $PATH

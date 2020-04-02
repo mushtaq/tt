@@ -21,7 +21,7 @@ jobs:
         run: ./cs java --jvm 11 --env
 
       - name: Set Java_Home
-        run: eval "$(./cs java --jvm 11 --env)"
+        run: eval "$(./cs java --jvm 11 --env)" && echo ::set-env name=PATH::$PATH name=JAVA_HOME::$JAVA_HOME
 
       - name: Install Sbt
         run:  ./cs install sbt-launcher

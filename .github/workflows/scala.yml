@@ -20,7 +20,7 @@ jobs:
       - name: Install Java
         run: |
           eval "$(./cs java --jvm 11 --env)"
-          echo ::set-env name=PATH::$PATH:~/.local/share/coursier/bin name=JAVA_HOME::$JAVA_HOME
+          echo ::set-env name=PATH::$PATH:~/.local/share/coursier/bin
 
       - name: Install Sbt
         run:  ./cs install sbt-launcher

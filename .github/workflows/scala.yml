@@ -18,13 +18,13 @@ jobs:
         run: curl -Lo cs https://git.io/coursier-cli-linux && chmod +x cs
         
       - name: Install Java
-        run: eval "$(./cs java --jvm 11 --env)"
+        run: eval "$(./cs java --jvm 11 --env)" && java --version
 
       - name: Install Sbt
         run: ./cs install sbt-launcher
         
       - name: Compile
-        run: java --version && ~/.local/share/coursier/bin/sbt compile
+        run: ~/.local/share/coursier/bin/sbt compile
         
       - name: Publish
         run: ~/.local/share/coursier/bin/sbt stPublish

@@ -27,7 +27,7 @@ jobs:
         run:  ./cs install sbt-launcher
         
       - name: Compile
-        run: eval "$(./cs java --jvm 11 --env)" && ~/.local/share/coursier/bin/sbt compile
+        run: ~/.local/share/coursier/bin/sbt compile
         
       - name: Publish
         run: ~/.local/share/coursier/bin/sbt stPublish

@@ -15,7 +15,9 @@ jobs:
       - uses: actions/checkout@v2
         
       - name: Install Coursier
-        run: curl -Lo cs https://git.io/coursier-cli-linux && chmod +x cs
+        run: |
+          curl -Lo cs https://git.io/coursier-cli-linux
+          chmod +x cs
         
       - name: Install Java
         run: |
@@ -25,5 +27,8 @@ jobs:
       - name: Install Sbt
         run:  ./cs install sbt-launcher
 
-      - name: Which Sbt
-        run:  which sbt && echo $PATH
+      - name: Compile
+        run: sbt compile
+        
+      - name: Publish
+        run: sbt stPublish

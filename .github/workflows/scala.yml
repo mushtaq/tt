@@ -13,25 +13,18 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: Set up JDK 11
-        uses: actions/setup-java@v1
-        with:
-          java-version: 11
+        
       - name: Install Coursier
-        run: curl -Lo coursier https://git.io/coursier-cli && chmod +x coursier
-      - name: Cache the cache directory
-        uses: actions/cache@v1
-        with:
-          path: ~/.cache
-          key: ${{ runner.os }}-cache-dir
-      - name: Local Artifacts Cache
-        uses: actions/cache@v1
-        with:
-          path: ~/.ivy2/local
-          key: ${{ runner.os }}-local-artifacts-cache
-      - name: Install Sbt launcher
-        run: ./coursier install sbt-launcher
+        run: curl -Lo cs https://git.io/coursier-cli-linux && chmod +x cs
+        
+      - name: Install Java
+        run: eval "$(./cs java --jvm 11 --env)"
+
+      - name: Install Sbt
+        run: ./cs install sbt-launcher
+        
       - name: Compile
         run: ~/.local/share/coursier/bin/sbt compile
+        
       - name: Publish
         run: ~/.local/share/coursier/bin/sbt stPublish

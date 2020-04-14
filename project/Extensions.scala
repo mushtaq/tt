@@ -27,7 +27,7 @@ object Extensions {
   }
 
   implicit class RichFuture[T](f: Future[T]) {
-    def get: T = Await.result(f, 5.minute)
+    def get: T = Await.result(f, 15.minute)
   }
 
 }

@@ -25,7 +25,8 @@ object StPublisherPlugin extends AutoPlugin {
         val repo: client.Repo = client.repo(client.user, "tmtyped")
         val log               = streams.value.log
         val stPublisher       = new StPublisher(repo)(log)
-        val deps              = stPublisher.publishAll("org.scalablytyped", stImport.value)
+        val modules           = stImport.value.toList.sortBy(_.name)
+        val deps              = stPublisher.publishAll("org.scalablytyped", modules)
         log.info("writing latest versions in the dependencies.txt")
         Files.writeString(JPath.of((baseDirectory.value / "dependencies.txt").toURI), deps.mkString("\n"))
         client.close()

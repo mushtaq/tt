@@ -5,7 +5,7 @@ import sbt.internal.util.ManagedLogger
 
 class StPublisher(repo: bintry.Client#Repo)(implicit logger: ManagedLogger) {
 
-  def publishAll(org: String, moduleIds: Set[ModuleID]): Set[String] = {
+  def publishAll(org: String, moduleIds: List[ModuleID]): List[String] = {
     val remotePackages: Seq[String] = getPackages
     remotePackages.mkString(", ").log("existing remote packages")
 

@@ -9,6 +9,9 @@ import scala.concurrent.ExecutionContext.Implicits.global
 import java.nio.file.{Path => JPath}
 
 object StPublisherPlugin extends AutoPlugin {
+  private val BINTRAY_USER_NAME = sys.env("BINTRAY_USER_NAME")
+  private val BINTRAY_TOKEN     = sys.env("BINTRAY_TOKEN")
+
   override def requires: Plugins = ScalablyTypedPluginBase
 
   object autoImport {
@@ -21,7 +24,7 @@ object StPublisherPlugin extends AutoPlugin {
   override lazy val projectSettings =
     Seq(
       stPublish := {
-        val client: Client    = Client("mausamy", "4934b5bfa581174c94e2054818850fd770728796")
+        val client: Client    = Client(BINTRAY_USER_NAME, BINTRAY_TOKEN)
         val repo: client.Repo = client.repo(client.user, "tmtyped")
         val log               = streams.value.log
         val stPublisher       = new StPublisher(repo)(log)

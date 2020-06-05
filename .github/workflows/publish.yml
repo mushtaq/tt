@@ -32,3 +32,6 @@ jobs:
         
       - name: Publish
         run: sbt stPublish
+        env:
+          BINTRAY_USER_NAME: ${{ secrets.BINTRAY_USER_NAME }}
+          BINTRAY_TOKEN: ${{ secrets.BINTRAY_TOKEN }}
